@@ -1,7 +1,6 @@
 package main
 
 import (
-	_"api/entities"
 	"api/handlers"
 	"github.com/gin-gonic/gin"
 )
