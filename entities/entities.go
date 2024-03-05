@@ -1,13 +1,25 @@
 package entities
 
-import "time"
+import (
+	"time"
+
+	"gorm.io/gorm"
+)
 
 type Transacao struct {
-	ID        int       `json:"id"`
+	gorm.Model
+	ClienteID uint
 	Valor     int       `json:"valor"`
 	Descricao string    `json:"descricao"`
 	Tipo      string    `json:"tipo"`
 	Data      time.Time `json:"data"`
+}
+
+type Cliente struct {
+	gorm.Model
+	Limite     uint        `json:"limite"`
+	Saldo      int         `json:"saldo"`
+	Transacoes []Transacao `json:"transacoes"`
 }
 
 type Extrato struct {
@@ -18,14 +30,7 @@ type Extrato struct {
 type Saldo struct {
 	Total       int       `json:"total"`
 	DataExtrato time.Time `json:"data_extrato"`
-	Limite      int       `json:"limite"`
-}
-
-type Cliente struct {
-	ID         int         `json:"id"`
-	Limite     int         `json:"limite"`
-	Saldo      int         `json:"saldo"`
-	Transacoes []Transacao `json:"transacoes"`
+	Limite      uint      `json:"limite"`
 }
 
 type TransacaoResposta struct {
