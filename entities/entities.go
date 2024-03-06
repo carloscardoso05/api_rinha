@@ -7,16 +7,16 @@ import (
 )
 
 type Transacao struct {
-	gorm.Model
-	ClienteID uint
-	Valor     int       `json:"valor"`
-	Descricao string    `json:"descricao"`
-	Tipo      string    `json:"tipo"`
-	Data      time.Time `json:"data"`
+	gorm.Model `json:" - "`
+	ClienteID  uint
+	Valor      int       `json:"valor"`
+	Descricao  string    `json:"descricao"`
+	Tipo       string    `json:"tipo"`
+	Data       time.Time `json:"data"`
 }
 
 type Cliente struct {
-	gorm.Model
+	gorm.Model `json:" - "`
 	Limite     uint        `json:"limite"`
 	Saldo      int         `json:"saldo"`
 	Transacoes []Transacao `json:"transacoes"`
@@ -34,6 +34,6 @@ type Saldo struct {
 }
 
 type TransacaoResposta struct {
-	Limite int `json:"limite"`
-	Saldo  int `json:"saldo"`
+	Limite uint `json:"limite"`
+	Saldo  int  `json:"saldo"`
 }

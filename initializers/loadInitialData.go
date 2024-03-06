@@ -8,6 +8,7 @@ import (
 )
 
 func LoadInitialData() {
+	DB.Exec("DELETE FROM transacaos")
 	DB.Exec("DELETE FROM clientes")
 
 	for _, c := range clientes {
