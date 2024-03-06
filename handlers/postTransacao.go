@@ -28,9 +28,5 @@ func PostTransacao(c *gin.Context) {
 		return
 	}
 
-	c.IndentedJSON(200, transacaoResposta)
-}
-
-func GetExtrato(c *gin.Context) {
-	c.String(http.StatusOK, "Get extrato")
+	c.IndentedJSON(http.StatusOK, transacaoResposta)
 }
