@@ -8,11 +8,11 @@ import (
 
 type Transacao struct {
 	gorm.Model `json:"-"`
-	ClienteID  uint
+	ClienteID  uint      `json:"-"`
 	Valor      int       `json:"valor"`
 	Descricao  string    `json:"descricao"`
 	Tipo       string    `json:"tipo"`
-	Data       time.Time `json:"data"`
+	Data       time.Time `json:"realizada_em"`
 }
 
 type Cliente struct {
