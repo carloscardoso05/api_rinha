@@ -27,6 +27,14 @@ func GetCliente(c *gin.Context, id int, cliente *entities.Cliente) error {
 	return result.Error
 }
 
+func GetUltimasTransacoes(c *gin.Context, id int, transacoes *[]entities.Transacao) error {
+	result := initializers.DB.Limit(10).Order("data desc").Where("cliente_id = ?", id).Find(transacoes)
+	if result.Error != nil {
+		c.String(http.StatusNotFound, "Id não encontrado")
+	}
+	return result.Error
+}
+
 func GetTransacaoFromRequest(c *gin.Context, transacao *entities.Transacao) (err error) {
 	if err = c.BindJSON(transacao); err != nil {
 		c.String(http.StatusUnprocessableEntity, "Corpo da requisição inválido")
